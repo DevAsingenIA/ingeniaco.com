@@ -1806,7 +1806,7 @@ function checkLead() {
 }
 
 // ⚠️ Reemplaza esta URL con la de tu Apps Script (Paso 4 de las instrucciones)
-const SHEETS_URL = 'TU_URL_AQUI';
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzhmw5Z03-xCDAE5NIEZEEzClPvubIrZ1mYixZdAqKeS72c-r9o2Zh6aoAC4Z66b1pi/exec';
 
 function calcScore() {
   let score = 40;
@@ -1854,7 +1854,7 @@ async function enviarLead() {
   };
 
   // Enviar a Google Sheets (si está configurado)
-  if (SHEETS_URL !== 'TU_URL_AQUI') {
+  if (SHEETS_URL !== 'https://script.google.com/macros/s/AKfycbzhmw5Z03-xCDAE5NIEZEEzClPvubIrZ1mYixZdAqKeS72c-r9o2Zh6aoAC4Z66b1pi/exec') {
     try {
       await fetch(SHEETS_URL, {
         method: "POST",
