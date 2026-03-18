@@ -1536,7 +1536,7 @@ img { -webkit-user-select: none; user-select: none; }
     <div class="reveal">
       <div class="s-eyebrow">Autodiagnóstico</div>
       <h2 class="s-title">Agenda tu<br><em>diagnóstico</em></h2>
-      <p class="s-desc">Completa el formulario y uno de nuestros especialistas te contactará para agendar tu sesión de diagnóstico de 1 hora (COP $250.000).</p>
+      <p class="s-desc">Completa el formulario y uno de nuestros especialistas te contactará para agendar tu sesión de diagnóstico especializado de 1 hora.</p>
       <div style="margin-top:40px;padding:28px;background:rgba(0,99,90,0.06);border-left:3px solid var(--verde);border-radius:2px">
         <p style="font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--morado);line-height:1.6">"Transformamos la complejidad técnica en fluidez empresarial"</p>
         <p style="font-size:12px;color:var(--texto-suave);margin-top:10px;letter-spacing:0.06em">— ingenIA, 2026</p>
@@ -1831,7 +1831,7 @@ const areasMap  = {
   4:["Bot cotizaciones automáticas","Atención automatizada WhatsApp","Seguimiento clientes sin intervención"]
 };
 
-async function enviarLead() {
+function enviarLead() {
   const nombre  = document.getElementById('leadNombre').value.trim();
   const empresa = document.getElementById('leadEmpresa').value.trim();
   const email   = document.getElementById('leadEmail').value.trim();
@@ -1853,16 +1853,13 @@ async function enviarLead() {
     mensaje: "Lead desde autodiagnóstico web"
   };
 
-  // Enviar a Google Sheets (si está configurado)
-  if (SHEETS_URL !== 'https://script.google.com/macros/s/AKfycbzhmw5Z03-xCDAE5NIEZEEzClPvubIrZ1mYixZdAqKeS72c-r9o2Zh6aoAC4Z66b1pi/exec') {
+  // Enviar a Google Sheets via GET (sin CORS)
+  if (SHEETS_URL && SHEETS_URL !== 'TU_URL_AQUI') {
     try {
-      await fetch(SHEETS_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {"Content-Type":"application/json"},
-        body: JSON.stringify(payload)
-      });
-    } catch(e) { console.warn("Sheets no disponible:", e); }
+      const params = new URLSearchParams(payload).toString();
+      const img = new Image();
+      img.src = SHEETS_URL + '?' + params;
+    } catch(e) { console.warn("Sheets error:", e); }
   }
 
   // Abrir WhatsApp siempre
