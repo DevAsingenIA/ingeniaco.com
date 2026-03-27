@@ -612,44 +612,69 @@ section {
 #equipo .s-desc { color: rgba(255,255,255,0.7); }
 
 .equipo-layout {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 48px; margin-top: 64px; align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 64px;
 }
 
 .founder-card {
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 4px;
-  padding: 44px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0;
+  padding: 0;
   transition: background 0.3s;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 160px;
+  overflow: hidden;
 }
-.founder-card:hover { background: rgba(255,255,255,0.2); }
+.founder-card:hover { background: rgba(255,255,255,0.1); }
 
-.founder-avatar {
-  width: 72px; height: 72px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--verde) 0%, var(--morado-mid) 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 26px; font-style: italic;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 24px;
-  border: 2px solid rgba(0,99,90,0.3);
+.founder-avatar { display: none; }
+
+.founder-left {
+  background: rgba(0,99,90,0.25);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.founder-right {
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .founder-name {
   font-family: 'Playfair Display', serif;
-  font-size: 22px; font-weight: 400;
-  color: var(--blanco); margin-bottom: 6px;
+  font-size: 24px; font-weight: 400;
+  color: var(--blanco); margin-bottom: 8px;
+  line-height: 1.2;
 }
 .founder-role {
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: rgba(255,255,255,0.65); margin-bottom: 20px;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(0,200,170,0.8); margin-bottom: 0;
 }
 .founder-bio {
   font-size: 13px; font-weight: 300;
-  color: rgba(255,255,255,0.75); line-height: 1.85;
+  color: rgba(255,255,255,0.72); line-height: 1.85;
+}
+
+@media (max-width: 768px) {
+  .founder-card {
+    grid-template-columns: 1fr;
+  }
+  .founder-left {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 28px 24px;
+  }
+  .founder-right { padding: 24px; }
 }
 
 .valores-wrap {
@@ -1109,7 +1134,7 @@ img { -webkit-user-select: none; user-select: none; }
 
 .soporte-layout {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1.5fr 1fr;
   gap: 64px;
   align-items: start;
 }
@@ -1511,6 +1536,35 @@ textarea.ticket-input {
         <span class="srv-tag">Roadmap</span>
       </div>
     </div>
+
+    <!-- RIGHT: info + login -->
+    <div class="reveal">
+      <div class="s-eyebrow">Portal de clientes</div>
+      <h2 class="s-title">Soporte<br><em>técnico</em></h2>
+      <p class="s-desc" style="margin-bottom:40px">Registra tu solicitud de soporte. Nuestro equipo la recibirá de inmediato y te responderá a la mayor brevedad.</p>
+
+      <!-- LOGIN -->
+      <div class="ticket-login" id="ticketLogin">
+        <h3>Acceso clientes</h3>
+        <p class="login-sub">Ingresa con el nombre de tu empresa y tu NIT como contraseña.</p>
+        <div class="login-field">
+          <label>Empresa</label>
+          <input type="text" class="login-input" id="loginEmpresa" placeholder="Nombre de tu empresa" autocomplete="organization">
+        </div>
+        <div class="login-field">
+          <label>NIT (contraseña)</label>
+          <input type="password" class="login-input" id="loginNit" placeholder="NIT sin dígito de verificación">
+        </div>
+        <div class="login-error" id="loginError">
+          Empresa o NIT no reconocidos. Contacta a tu asesor de ingenIA.
+        </div>
+        <button class="btn-login" onclick="loginTicket()">Ingresar →</button>
+        <p style="font-size:11px;color:#aaa;text-align:center;margin-top:16px">
+          ¿No tienes acceso? Escríbenos a <a href="mailto:info@ingeniaco.com" style="color:var(--verde)">info@ingeniaco.com</a>
+        </p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1760,16 +1814,22 @@ textarea.ticket-input {
   </div>
   <div class="equipo-layout reveal">
     <div class="founder-card">
-      <div class="founder-avatar">AS</div>
-      <div class="founder-name">Angélica Salas</div>
-      <div class="founder-role">Co-fundadora · Soluciones Low-Code &amp; No-Code</div>
-      <p class="founder-bio">Especialista en diseño e implementación de soluciones Low-Code y No-Code, y automatización empresarial. Convierte la complejidad operativa en sistemas ágiles que simplemente funcionan desde el primer día.</p>
+      <div class="founder-left">
+        <div class="founder-name">Angélica Salas</div>
+        <div class="founder-role">Co-fundadora · Soluciones Low-Code &amp; No-Code</div>
+      </div>
+      <div class="founder-right">
+        <p class="founder-bio">Especialista en diseño e implementación de soluciones Low-Code y No-Code, y automatización empresarial. Convierte la complejidad operativa en sistemas ágiles que simplemente funcionan desde el primer día.</p>
+      </div>
     </div>
     <div class="founder-card">
-      <div class="founder-avatar">VV</div>
-      <div class="founder-name">Viviana Velandia</div>
-      <div class="founder-role">Co-fundadora · Estrategia y Operaciones</div>
-      <p class="founder-bio">Estratega empresarial con visión en operaciones y transformación digital. Traduce las necesidades del cliente en soluciones de automatización con impacto real y medible en la eficiencia operativa.</p>
+      <div class="founder-left">
+        <div class="founder-name">Viviana Velandia</div>
+        <div class="founder-role">Co-fundadora · Estrategia y Operaciones</div>
+      </div>
+      <div class="founder-right">
+        <p class="founder-bio">Estratega empresarial con visión en operaciones y transformación digital. Traduce las necesidades del cliente en soluciones de automatización con impacto real y medible en la eficiencia operativa.</p>
+      </div>
     </div>
   </div>
   <div class="valores-wrap reveal" style="max-width:600px;margin-top:48px">
@@ -1918,35 +1978,7 @@ textarea.ticket-input {
 <section id="soporte">
   <div class="soporte-layout">
 
-    <!-- LEFT: info + login -->
-    <div class="reveal">
-      <div class="s-eyebrow">Portal de clientes</div>
-      <h2 class="s-title">Soporte<br><em>técnico</em></h2>
-      <p class="s-desc" style="margin-bottom:40px">Registra tu solicitud de soporte. Nuestro equipo la recibirá de inmediato y te responderá a la brevedad.</p>
-
-      <!-- LOGIN -->
-      <div class="ticket-login" id="ticketLogin">
-        <h3>Acceso clientes</h3>
-        <p class="login-sub">Ingresa con el nombre de tu empresa y tu NIT como contraseña.</p>
-        <div class="login-field">
-          <label>Empresa</label>
-          <input type="text" class="login-input" id="loginEmpresa" placeholder="Nombre de tu empresa" autocomplete="organization">
-        </div>
-        <div class="login-field">
-          <label>NIT (contraseña)</label>
-          <input type="password" class="login-input" id="loginNit" placeholder="NIT sin dígito de verificación">
-        </div>
-        <div class="login-error" id="loginError">
-          Empresa o NIT no reconocidos. Contacta a tu asesor de ingenIA.
-        </div>
-        <button class="btn-login" onclick="loginTicket()">Ingresar →</button>
-        <p style="font-size:11px;color:#aaa;text-align:center;margin-top:16px">
-          ¿No tienes acceso? Escríbenos a <a href="mailto:info@ingeniaco.com" style="color:var(--verde)">info@ingeniaco.com</a>
-        </p>
-      </div>
-    </div>
-
-    <!-- RIGHT: ticket form -->
+    <!-- LEFT: ticket form -->
     <div class="ticket-form-wrap reveal" id="ticketFormWrap">
 
       <!-- Header con empresa logueada -->
