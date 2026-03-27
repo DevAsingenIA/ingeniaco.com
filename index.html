@@ -1101,6 +1101,262 @@ img { -webkit-user-select: none; user-select: none; }
   }
 }
 
+
+/* ═══════════════════════════════════════
+   PORTAL DE SOPORTE / TICKETS
+═══════════════════════════════════════ */
+#soporte { background: var(--crema-dark); }
+
+.soporte-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Login panel */
+.ticket-login {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  padding: 44px;
+  box-shadow: 0 8px 40px rgba(0,99,90,0.06);
+}
+
+.ticket-login h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 400;
+  color: var(--morado); margin-bottom: 8px;
+}
+
+.login-sub {
+  font-size: 13px; font-weight: 300;
+  color: var(--texto-suave);
+  margin-bottom: 28px; line-height: 1.7;
+}
+
+.login-field {
+  margin-bottom: 16px;
+}
+
+.login-field label {
+  display: block;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--verde); margin-bottom: 8px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid var(--borde);
+  border-radius: 2px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px; font-weight: 300;
+  color: var(--texto); background: var(--crema);
+  outline: none; transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+.login-input:focus { border-color: var(--verde); background: var(--blanco); }
+
+.login-error {
+  display: none;
+  font-size: 12px; color: #c0392b;
+  background: #fdf2f0; border: 1px solid #f5c6c0;
+  padding: 10px 14px; border-radius: 2px;
+  margin-top: 16px;
+}
+.login-error.show { display: block; }
+
+.btn-login {
+  width: 100%; padding: 14px;
+  background: var(--morado); color: white;
+  border: none; border-radius: 2px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  cursor: pointer; margin-top: 8px;
+  transition: all 0.2s;
+}
+.btn-login:hover { background: var(--verde); transform: translateY(-1px); }
+
+/* Ticket form */
+.ticket-form-wrap {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,99,90,0.06);
+  display: none;
+}
+.ticket-form-wrap.active { display: block; }
+
+.ticket-form-header {
+  background: var(--morado);
+  padding: 24px 36px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+}
+
+.ticket-empresa-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 400;
+  color: var(--crema);
+}
+
+.ticket-badge {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.08);
+  padding: 4px 12px; border-radius: 20px;
+}
+
+.btn-logout {
+  background: none; border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.6);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px; padding: 6px 14px;
+  border-radius: 2px; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-logout:hover { border-color: rgba(255,255,255,0.5); color: white; }
+
+.ticket-form-body { padding: 36px; }
+
+.ticket-field { margin-bottom: 20px; }
+
+.ticket-field label {
+  display: block;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--verde); margin-bottom: 8px;
+}
+
+.ticket-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--borde);
+  border-radius: 2px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px; font-weight: 300;
+  color: var(--texto); background: var(--crema);
+  outline: none; transition: border-color 0.2s;
+  -webkit-appearance: none;
+  font-size: 16px;
+}
+.ticket-input:focus { border-color: var(--verde); background: var(--blanco); }
+
+textarea.ticket-input {
+  resize: vertical; min-height: 120px; line-height: 1.7;
+}
+
+.ticket-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+
+/* Image upload */
+.upload-area {
+  border: 2px dashed var(--borde);
+  border-radius: 4px;
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  background: var(--crema);
+}
+.upload-area:hover, .upload-area.dragover {
+  border-color: var(--verde);
+  background: rgba(0,99,90,0.03);
+}
+.upload-area input[type="file"] {
+  position: absolute; inset: 0;
+  opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+.upload-icon { font-size: 28px; margin-bottom: 10px; }
+.upload-text {
+  font-size: 13px; font-weight: 300; color: var(--texto-suave);
+  line-height: 1.6;
+}
+.upload-text strong { color: var(--verde); font-weight: 500; }
+
+.image-previews {
+  display: flex; gap: 12px; margin-top: 12px;
+  flex-wrap: wrap;
+}
+.img-preview {
+  width: 80px; height: 80px;
+  border-radius: 4px; overflow: hidden;
+  border: 1px solid var(--borde);
+  position: relative;
+}
+.img-preview img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.img-preview .img-remove {
+  position: absolute; top: 2px; right: 2px;
+  width: 18px; height: 18px;
+  background: rgba(45,30,47,0.8); color: white;
+  border-radius: 50%; font-size: 10px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; border: none;
+  transition: background 0.2s;
+}
+.img-preview .img-remove:hover { background: #c0392b; }
+
+.btn-ticket {
+  width: 100%; padding: 15px;
+  background: var(--verde); color: white;
+  border: none; border-radius: 2px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  cursor: pointer; margin-top: 8px;
+  transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.btn-ticket:hover { background: var(--morado); transform: translateY(-1px); }
+.btn-ticket:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* Ticket confirmation */
+.ticket-confirm {
+  display: none;
+  padding: 48px 36px;
+  text-align: center;
+}
+.ticket-confirm.show { display: block; }
+
+.ticket-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px; font-weight: 400;
+  color: var(--verde); line-height: 1;
+  margin-bottom: 8px;
+}
+.ticket-num-label {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--texto-suave); margin-bottom: 28px;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 768px) {
+  .soporte-layout { grid-template-columns: 1fr; gap: 32px; }
+  .ticket-row { grid-template-columns: 1fr; }
+  .ticket-form-body { padding: 24px; }
+  .ticket-form-header { padding: 20px 24px; flex-wrap: wrap; gap: 12px; }
+}
+
 </style>
 </head>
 <body>
@@ -1128,7 +1384,8 @@ img { -webkit-user-select: none; user-select: none; }
     <a href="#resultados" onclick="toggleMobileMenu()">Resultados</a>
     <a href="#equipo" onclick="toggleMobileMenu()">Nosotras</a>
     <a href="#diagnostico" onclick="toggleMobileMenu()">Diagnóstico</a>
-    <a href="https://wa.me/573013901175?text=Hola%20ingenIA!" target="_blank" style="color:var(--verde)">💬 WhatsApp</a>
+    <a href="#soporte" onclick="toggleMobileMenu()">Soporte</a>
+    <a href="https://wa.me/573013901175?text=Hola%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20interesa%20un%20diagn%C3%B3stico%20de%20automatizaci%C3%B3n%20empresarial." target="_blank" style="color:var(--verde)">💬 WhatsApp</a>
   </div>
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
@@ -1136,7 +1393,8 @@ img { -webkit-user-select: none; user-select: none; }
     <li><a href="#resultados">Resultados</a></li>
     <li><a href="#equipo">Nosotras</a></li>
     <li><a href="#diagnostico">Diagnóstico</a></li>
-    <li><a href="https://wa.me/573013901175?text=Hola%20ingenIA!%20Quiero%20saber%20más" target="_blank" class="nav-wa">
+    <li><a href="#soporte">Soporte</a></li>
+    <li><a href="https://wa.me/573013901175?text=Hola%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20interesa%20un%20diagn%C3%B3stico%20de%20automatizaci%C3%B3n%20empresarial.%20Quiero%20saber%20más" target="_blank" class="nav-wa">
       <span>💬</span> WhatsApp
     </a></li>
   </ul>
@@ -1149,7 +1407,7 @@ img { -webkit-user-select: none; user-select: none; }
   <h1>Transformamos la<br>complejidad técnica<br>en <em>fluidez empresarial</em></h1>
   <p class="hero-sub">Diseñamos e implementamos sistemas de automatización a medida para micro y medianas empresas. No solo código — entregamos procesos que funcionan desde el primer día.</p>
   <div class="hero-actions">
-    <a href="https://wa.me/573013901175?text=Hola%20ingenIA!%20Quiero%20mi%20diagnóstico%20gratuito" target="_blank" class="btn-verde">
+    <a href="https://wa.me/573013901175?text=Hola%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20interesa%20un%20diagn%C3%B3stico%20de%20automatizaci%C3%B3n%20empresarial.%20Quiero%20mi%20diagnóstico%20gratuito" target="_blank" class="btn-verde">
       <span>💬</span> Diagnóstico especializado
     </a>
     <a href="#servicios" class="btn-ghost">Ver servicios →</a>
@@ -1655,13 +1913,124 @@ img { -webkit-user-select: none; user-select: none; }
   </div>
 </section>
 
+
+<!-- ══════════════════ SOPORTE / TICKETS ══════════════════ -->
+<section id="soporte">
+  <div class="soporte-layout">
+
+    <!-- LEFT: info + login -->
+    <div class="reveal">
+      <div class="s-eyebrow">Portal de clientes</div>
+      <h2 class="s-title">Soporte<br><em>técnico</em></h2>
+      <p class="s-desc" style="margin-bottom:40px">Registra tu solicitud de soporte. Nuestro equipo la recibirá de inmediato y te responderá a la brevedad.</p>
+
+      <!-- LOGIN -->
+      <div class="ticket-login" id="ticketLogin">
+        <h3>Acceso clientes</h3>
+        <p class="login-sub">Ingresa con el nombre de tu empresa y tu NIT como contraseña.</p>
+        <div class="login-field">
+          <label>Empresa</label>
+          <input type="text" class="login-input" id="loginEmpresa" placeholder="Nombre de tu empresa" autocomplete="organization">
+        </div>
+        <div class="login-field">
+          <label>NIT (contraseña)</label>
+          <input type="password" class="login-input" id="loginNit" placeholder="NIT sin dígito de verificación">
+        </div>
+        <div class="login-error" id="loginError">
+          Empresa o NIT no reconocidos. Contacta a tu asesor de ingenIA.
+        </div>
+        <button class="btn-login" onclick="loginTicket()">Ingresar →</button>
+        <p style="font-size:11px;color:#aaa;text-align:center;margin-top:16px">
+          ¿No tienes acceso? Escríbenos a <a href="mailto:info@ingeniaco.com" style="color:var(--verde)">info@ingeniaco.com</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT: ticket form -->
+    <div class="ticket-form-wrap reveal" id="ticketFormWrap">
+
+      <!-- Header con empresa logueada -->
+      <div class="ticket-form-header">
+        <div>
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px">Cliente activo</div>
+          <div class="ticket-empresa-name" id="ticketEmpresaName">—</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="ticket-badge">Portal de soporte</span>
+          <button class="btn-logout" onclick="logoutTicket()">Salir</button>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <div class="ticket-form-body" id="ticketFormBody">
+        <div class="ticket-row">
+          <div class="ticket-field">
+            <label>Nombre completo *</label>
+            <input type="text" class="ticket-input" id="tNombre" placeholder="Tu nombre">
+          </div>
+          <div class="ticket-field">
+            <label>Cargo *</label>
+            <input type="text" class="ticket-input" id="tCargo" placeholder="Tu cargo en la empresa">
+          </div>
+        </div>
+        <div class="ticket-row">
+          <div class="ticket-field">
+            <label>Email *</label>
+            <input type="email" class="ticket-input" id="tEmail" placeholder="correo@empresa.com">
+          </div>
+          <div class="ticket-field">
+            <label>Celular</label>
+            <input type="tel" class="ticket-input" id="tCelular" placeholder="3001234567">
+          </div>
+        </div>
+        <div class="ticket-field">
+          <label>Descripción del problema *</label>
+          <textarea class="ticket-input" id="tDescripcion" placeholder="Describe detalladamente lo que está ocurriendo, cuándo empezó y qué pasos has seguido..."></textarea>
+        </div>
+        <div class="ticket-field">
+          <label>Imágenes de soporte (máx. 2)</label>
+          <div class="upload-area" id="uploadArea">
+            <input type="file" id="tImagenes" accept="image/*" multiple onchange="handleImages(this)">
+            <div class="upload-icon">🖼️</div>
+            <div class="upload-text">
+              <strong>Arrastra imágenes aquí</strong> o haz clic para seleccionar<br>
+              <span style="font-size:11px;color:#bbb">JPG, PNG · Máx. 2 imágenes · Se comprimen automáticamente</span>
+            </div>
+          </div>
+          <div class="image-previews" id="imagePreviews"></div>
+        </div>
+
+        <button class="btn-ticket" id="btnTicket" onclick="enviarTicket()">
+          <span id="btnTicketText">Enviar solicitud de soporte</span>
+          <div class="spinner" id="ticketSpinner"></div>
+        </button>
+      </div>
+
+      <!-- Confirmación -->
+      <div class="ticket-confirm" id="ticketConfirm">
+        <div style="width:72px;height:72px;background:rgba(0,99,90,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:30px">✅</div>
+        <div class="ticket-num" id="ticketNumDisplay">—</div>
+        <div class="ticket-num-label">Número de ticket</div>
+        <p style="font-size:14px;color:var(--texto-suave);line-height:1.8;margin-bottom:28px">
+          Tu solicitud fue registrada exitosamente.<br>
+          Nuestro equipo te contactará pronto al email y celular indicados.
+        </p>
+        <button onclick="nuevoTicket()" style="background:none;border:1px solid var(--borde);color:var(--morado);padding:11px 28px;border-radius:2px;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s" onmouseover="this.style.background='var(--verde)';this.style.color='white';this.style.borderColor='var(--verde)'" onmouseout="this.style.background='none';this.style.color='var(--morado)';this.style.borderColor='var(--borde)'">
+          Registrar otro ticket
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════════ CONTACTO ══════════════════ -->
 <section id="contacto">
   <div class="reveal">
     <div class="s-eyebrow">Contacto</div>
     <h2 class="s-title" style="max-width:700px">¿Listo para dejar de hacer<br>lo mismo a <em style="color:#ffffff;font-style:italic">mano cada día?</em></h2>
     <p class="contacto-sub">Agenda un diagnóstico especializado de 30 minutos. Te mostramos exactamente qué procesos se pueden automatizar en tu empresa y cuánto tiempo recuperarías.</p>
-    <a href="https://wa.me/573013901175?text=Hola%20ingenIA!%20Vi%20su%20página%20y%20quiero%20agendar%20un%20diagnóstico%20gratuito" target="_blank" class="wa-btn-big">
+    <a href="https://wa.me/573013901175?text=Hola%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20interesa%20un%20diagn%C3%B3stico%20de%20automatizaci%C3%B3n%20empresarial.%20Vi%20su%20página%20y%20quiero%20agendar%20un%20diagnóstico%20gratuito" target="_blank" class="wa-btn-big">
       <span style="font-size:20px">💬</span>
       Escribir por WhatsApp
     </a>
@@ -1684,6 +2053,7 @@ img { -webkit-user-select: none; user-select: none; }
     <li><a href="#proceso">Proceso</a></li>
     <li><a href="#equipo">Nosotras</a></li>
     <li><a href="#diagnostico">Diagnóstico</a></li>
+    <li><a href="#soporte">Soporte</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
   <div class="footer-copy">© 2026 ingenIA · Automatización Empresarial Inteligente</div>
@@ -1836,9 +2206,14 @@ function enviarLead() {
   const empresa = document.getElementById('leadEmpresa').value.trim();
   const email   = document.getElementById('leadEmail').value.trim();
   const celular = document.getElementById('leadCelular').value.trim();
-  const score   = calcScore();
-  const areas   = (areasMap[answers[2]] || areasMap[1]).join(", ");
-  const waMsg   = `Hola ingenIA! 👋\n\nHice el autodiagnóstico y obtuve ${score}% de potencial de automatización.\n\n👤 ${nombre}\n🏢 ${empresa||"No indicada"}\n📧 ${email}\n📱 ${celular}\n\nÁreas: ${areas}\n\nMe interesa agendar un diagnóstico especializado.`;
+
+  if (!nombre || !email || !celular) {
+    checkLead();
+    return;
+  }
+
+  const score = calcScore();
+  const areas = (areasMap[answers[2]] || areasMap[1]).join(", ");
 
   const payload = {
     nombre, empresa, email, celular,
@@ -1853,29 +2228,34 @@ function enviarLead() {
     mensaje: "Lead desde autodiagnóstico web"
   };
 
-  // Enviar a Google Sheets via GET (sin CORS)
+  // 1. Mostrar confirmación PRIMERO
+  document.getElementById('diagSteps').innerHTML = `
+    <div style="text-align:center;padding:48px 20px">
+      <div style="width:80px;height:80px;border-radius:50%;background:rgba(0,99,90,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:36px">✅</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--morado);margin-bottom:16px">¡Recibido!</h3>
+      <p style="font-size:15px;color:var(--texto-suave);line-height:1.9;margin-bottom:8px">
+        Pronto nos comunicaremos contigo, <strong style="color:var(--morado)">${nombre}</strong>.
+      </p>
+      <p style="font-size:14px;color:var(--texto-suave);line-height:1.8;margin-bottom:28px">
+        Nuestro equipo te contactará en menos de<br>
+        <strong style="color:var(--verde)">24 horas hábiles</strong> para coordinar tu diagnóstico.
+      </p>
+      <a href="https://wa.me/573013901175?text=${encodeURIComponent(`Hola, vengo de tu página web y me interesa un diagnóstico de automatización empresarial. Mi nombre es: ${nombre}${empresa ? ' de ' + empresa : ''}.`)}"
+         target="_blank"
+         style="display:inline-flex;align-items:center;gap:10px;background:#25D366;color:white;padding:13px 28px;border-radius:2px;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.05em;transition:background 0.2s">
+        <span style="font-size:16px">💬</span> Escribir por WhatsApp ahora
+      </a>
+    </div>
+  `;
+
+  // 2. Enviar a Google Sheets en background
   if (SHEETS_URL && SHEETS_URL !== 'TU_URL_AQUI') {
     try {
       const params = new URLSearchParams(payload).toString();
       const img = new Image();
       img.src = SHEETS_URL + '?' + params;
-    } catch(e) { console.warn("Sheets error:", e); }
+    } catch(e) { console.warn("Sheets:", e); }
   }
-
-  // Abrir WhatsApp siempre
-  window.open(`https://wa.me/573013901175?text=${encodeURIComponent(waMsg)}`, '_blank');
-
-  document.getElementById('diagSteps').innerHTML = `
-    <div style="text-align:center;padding:40px 20px">
-      <div style="font-size:52px;margin-bottom:20px">✅</div>
-      <h3 style="font-family:'Playfair Display',serif;color:var(--morado);margin-bottom:14px">¡Información recibida!</h3>
-      <p style="font-size:13px;color:var(--texto-suave);line-height:1.9">
-        Tu diagnóstico fue enviado a nuestro equipo.<br>
-        Te contactaremos en menos de <strong style="color:var(--verde)">24 horas hábiles</strong>.<br><br>
-        <span style="font-size:12px;color:#aaa">También se abrió WhatsApp para contacto directo.</span>
-      </p>
-    </div>
-  `;
 }
 
 // ─── Mobile menu ───
@@ -1900,12 +2280,7 @@ function enviarLead() {
   const proceso = document.getElementById('leadProceso').value.trim();
 
   const msg = encodeURIComponent(
-    `Hola ingenIA! 👋\n\nQuiero agendar un diagnóstico especializado.\n\n` +
-    `👤 Nombre: ${nombre}\n` +
-    `🏢 Empresa: ${empresa || 'No indicada'}\n` +
-    `📧 Email: ${email}\n` +
-    `📱 Celular: ${celular}\n` +
-    `⚙️ Proceso a automatizar: ${proceso || 'Por definir en la sesión'}`
+    `Hola, vengo de tu página web y me interesa un diagnóstico de automatización empresarial. Mi nombre es: ${nombre}${empresa ? ' de ' + empresa : ''}.`
   );
 
   window.open(`https://wa.me/573013901175?text=${msg}`, '_blank');
@@ -1931,6 +2306,214 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
+
+// ═══════════════════════════════════════
+// PORTAL DE TICKETS
+// ═══════════════════════════════════════
+
+// ⚠️ CLIENTES AUTORIZADOS — agrega aquí tus clientes
+// Formato: "NOMBRE_EMPRESA_LOWERCASE": "NIT_SIN_DV"
+const CLIENTES = {
+  "prueba ingenIA":    "000000000",
+  "distribuidora el sol": "900123456",
+  "clinica san rafael":   "800987654",
+  "constructora abc":     "901234567"
+};
+
+// ⚠️ URL de tu Apps Script (misma que para leads o una nueva implementación)
+const TICKETS_URL = 'https://script.google.com/macros/s/AKfycbzhmw5Z03-xCDAE5NIEZEEzClPvubIrZ1mYixZdAqKeS72c-r9o2Zh6aoAC4Z66b1pi/exec';
+
+let currentEmpresa = null;
+let ticketImages = [];
+let ticketCounter = 0;
+
+function loginTicket() {
+  const empresa = document.getElementById('loginEmpresa').value.trim().toLowerCase();
+  const nit     = document.getElementById('loginNit').value.trim();
+  const error   = document.getElementById('loginError');
+
+  if (CLIENTES[empresa] && CLIENTES[empresa] === nit) {
+    currentEmpresa = document.getElementById('loginEmpresa').value.trim();
+    error.classList.remove('show');
+    document.getElementById('ticketLogin').style.display = 'none';
+    document.getElementById('ticketEmpresaName').textContent = currentEmpresa;
+    document.getElementById('ticketFormWrap').classList.add('active');
+  } else {
+    error.classList.add('show');
+    document.getElementById('loginNit').value = '';
+    document.getElementById('loginNit').focus();
+  }
+}
+
+// Login con Enter
+document.addEventListener('DOMContentLoaded', () => {
+  ['loginEmpresa','loginNit'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('keydown', e => { if (e.key === 'Enter') loginTicket(); });
+  });
+
+  // Drag and drop
+  const area = document.getElementById('uploadArea');
+  if (area) {
+    area.addEventListener('dragover', e => { e.preventDefault(); area.classList.add('dragover'); });
+    area.addEventListener('dragleave', () => area.classList.remove('dragover'));
+    area.addEventListener('drop', e => {
+      e.preventDefault();
+      area.classList.remove('dragover');
+      const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+      processImages(files);
+    });
+  }
+});
+
+function logoutTicket() {
+  currentEmpresa = null;
+  ticketImages = [];
+  document.getElementById('loginEmpresa').value = '';
+  document.getElementById('loginNit').value = '';
+  document.getElementById('ticketLogin').style.display = 'block';
+  document.getElementById('ticketFormWrap').classList.remove('active');
+  document.getElementById('ticketConfirm').classList.remove('show');
+  document.getElementById('ticketFormBody').style.display = 'block';
+}
+
+function handleImages(input) {
+  const files = Array.from(input.files);
+  processImages(files);
+}
+
+function processImages(files) {
+  const remaining = 2 - ticketImages.length;
+  const toAdd = files.slice(0, remaining);
+
+  toAdd.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      // Compress image
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const maxW = 1200;
+        let w = img.width, h = img.height;
+        if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        const compressed = canvas.toDataURL('image/jpeg', 0.7);
+        ticketImages.push({ name: file.name, data: compressed });
+        renderPreviews();
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function renderPreviews() {
+  const container = document.getElementById('imagePreviews');
+  container.innerHTML = ticketImages.map((img, i) => `
+    <div class="img-preview">
+      <img src="${img.data}" alt="img ${i+1}">
+      <button class="img-remove" onclick="removeImage(${i})">✕</button>
+    </div>
+  `).join('');
+
+  // Update upload area
+  const area = document.getElementById('uploadArea');
+  if (ticketImages.length >= 2) {
+    area.style.opacity = '0.4';
+    area.style.pointerEvents = 'none';
+  } else {
+    area.style.opacity = '1';
+    area.style.pointerEvents = 'auto';
+  }
+}
+
+function removeImage(idx) {
+  ticketImages.splice(idx, 1);
+  renderPreviews();
+  document.getElementById('tImagenes').value = '';
+}
+
+async function enviarTicket() {
+  const nombre      = document.getElementById('tNombre').value.trim();
+  const cargo       = document.getElementById('tCargo').value.trim();
+  const email       = document.getElementById('tEmail').value.trim();
+  const celular     = document.getElementById('tCelular').value.trim();
+  const descripcion = document.getElementById('tDescripcion').value.trim();
+
+  if (!nombre || !cargo || !email || !descripcion) {
+    alert('Por favor completa los campos obligatorios: Nombre, Cargo, Email y Descripción.');
+    return;
+  }
+
+  // Generate ticket number: ING-YYYYMMDD-XXXX
+  const now = new Date();
+  const dateStr = now.getFullYear().toString() +
+    String(now.getMonth()+1).padStart(2,'0') +
+    String(now.getDate()).padStart(2,'0');
+  const rand = Math.floor(1000 + Math.random() * 9000);
+  const ticketNum = `ING-${dateStr}-${rand}`;
+
+  // Show loading
+  const btn = document.getElementById('btnTicket');
+  const spinner = document.getElementById('ticketSpinner');
+  const btnText = document.getElementById('btnTicketText');
+  btn.disabled = true;
+  btnText.textContent = 'Enviando...';
+  spinner.style.display = 'block';
+
+  // Prepare payload
+  const payload = {
+    tipo: 'ticket',
+    ticket_num: ticketNum,
+    empresa: currentEmpresa,
+    nombre, cargo, email, celular, descripcion,
+    fecha: now.toLocaleDateString('es-CO') + ' ' + now.toLocaleTimeString('es-CO'),
+    imagen1: ticketImages[0] ? ticketImages[0].name : '',
+    imagen2: ticketImages[1] ? ticketImages[1].name : '',
+    imagen1_data: ticketImages[0] ? ticketImages[0].data.substring(0, 100) + '...' : '',
+  };
+
+  // Send to Sheets
+  try {
+    const params = new URLSearchParams({
+      tipo: 'ticket',
+      ticket_num: ticketNum,
+      empresa: currentEmpresa,
+      nombre, cargo, email, celular, descripcion,
+      fecha: payload.fecha,
+      imagen1: payload.imagen1,
+      imagen2: payload.imagen2,
+      estado: 'Abierto'
+    }).toString();
+    const img = new Image();
+    img.src = TICKETS_URL + '?' + params;
+  } catch(e) { console.warn('Sheets:', e); }
+
+  // Simulate brief loading then show confirmation
+  setTimeout(() => {
+    btn.disabled = false;
+    btnText.textContent = 'Enviar solicitud de soporte';
+    spinner.style.display = 'none';
+
+    document.getElementById('ticketNumDisplay').textContent = ticketNum;
+    document.getElementById('ticketFormBody').style.display = 'none';
+    document.getElementById('ticketConfirm').classList.add('show');
+  }, 1200);
+}
+
+function nuevoTicket() {
+  // Reset form
+  ['tNombre','tCargo','tEmail','tCelular','tDescripcion'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  ticketImages = [];
+  renderPreviews();
+  document.getElementById('tImagenes').value = '';
+  document.getElementById('ticketConfirm').classList.remove('show');
+  document.getElementById('ticketFormBody').style.display = 'block';
+}
+
 </script>
 </body>
 </html>
