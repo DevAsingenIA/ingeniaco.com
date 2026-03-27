@@ -1004,31 +1004,36 @@ footer {
 /* ═══════════════════════════════════════
    RESPONSIVE — MOBILE & SAFARI
 ═══════════════════════════════════════ */
-/* Safari fixes */
 * { -webkit-tap-highlight-color: transparent; }
-input, button, textarea { -webkit-appearance: none; appearance: none; }
+input, button, textarea, select { -webkit-appearance: none; appearance: none; }
 img { -webkit-user-select: none; user-select: none; }
 
-/* Mobile nav */
+/* ── HAMBURGER NAV ── */
 .nav-hamburger {
   display: none;
   flex-direction: column; gap: 5px;
-  cursor: pointer; padding: 4px;
-  background: none; border: none;
+  cursor: pointer; padding: 6px;
+  background: none; border: none; z-index: 300;
 }
 .nav-hamburger span {
   display: block; width: 22px; height: 2px;
   background: var(--morado);
+  border-radius: 2px;
   transition: all 0.3s;
 }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 .nav-mobile-menu {
   display: none;
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  position: fixed; inset: 0;
   background: var(--crema);
   z-index: 200;
   flex-direction: column;
   align-items: center; justify-content: center;
-  gap: 32px;
+  gap: 28px;
+  padding: 40px;
 }
 .nav-mobile-menu.open { display: flex; }
 .nav-mobile-menu a {
@@ -1039,90 +1044,128 @@ img { -webkit-user-select: none; user-select: none; }
 }
 .nav-mobile-menu a:hover { color: var(--verde); }
 .nav-mobile-close {
-  position: absolute; top: 24px; right: 24px;
+  position: absolute; top: 24px; right: 28px;
   font-size: 28px; color: var(--morado);
   background: none; border: none; cursor: pointer;
   line-height: 1;
 }
 
+/* ── TABLET 1024px ── */
+@media (max-width: 1024px) {
+  nav { padding: 18px 32px; }
+  .nav-links { gap: 20px; }
+  .nav-links a { font-size: 11px; }
+  section { padding: 80px 32px; }
+  .hero { padding: 120px 32px 80px; }
+  .hero-metrics { display: none; }
+  .scroll-cue { left: 32px; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .srv-card:nth-child(2) { border-right: none; }
+  .proceso-grid { grid-template-columns: 1fr 1fr; }
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .industrias-grid { grid-template-columns: repeat(4, 1fr); }
+  #tecnologias { padding: 64px 32px; }
+  footer { padding: 36px 32px; }
+}
+
+/* ── MOBILE 768px ── */
 @media (max-width: 768px) {
   body { cursor: auto; }
   .cursor-dot, .cursor-ring { display: none; }
 
+  /* Nav */
   nav { padding: 16px 20px; }
   nav.scrolled { padding: 12px 20px; }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
 
-  .hero {
-    padding: 100px 20px 60px;
-    min-height: 100svh;
-  }
-  .hero-line { height: 48px; margin-bottom: 24px; }
-  .hero h1 { font-size: clamp(36px, 9vw, 56px); }
-  .hero-sub { font-size: 14px; }
-  .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+  /* Hero */
+  .hero { padding: 100px 20px 64px; min-height: 100svh; }
+  .hero-line { height: 40px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(34px, 9vw, 52px); }
+  .hero-sub { font-size: 14px; max-width: 100%; }
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 14px; }
   .btn-verde { width: 100%; justify-content: center; padding: 16px; }
   .hero-metrics { display: none; }
   .scroll-cue { left: 20px; }
 
+  /* Sections */
   section { padding: 64px 20px; }
+  .s-title { font-size: clamp(28px, 7vw, 42px); }
 
+  /* Services */
   .services-header { grid-template-columns: 1fr; gap: 20px; }
-  .services-grid { grid-template-columns: 1fr; border: none; gap: 2px; }
-  .srv-card { border: 1px solid var(--borde); border-right: 1px solid var(--borde) !important; }
+  .services-grid { grid-template-columns: 1fr; }
+  .srv-card { border-right: 1px solid var(--borde) !important; }
 
+  /* Proceso */
   .proceso-grid { grid-template-columns: 1fr; gap: 2px; }
-  .paso { padding: 32px 24px; }
+  .paso { padding: 28px 20px; }
 
+  /* Metrics */
   .metrics-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-  .metric-card { padding: 32px 20px; }
-  .mc-num { font-size: 44px; }
+  .metric-card { padding: 28px 16px; }
+  .mc-num { font-size: 40px; }
 
+  /* Industrias */
   .ind-header { grid-template-columns: 1fr; gap: 20px; }
   .industrias-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .ind-chip { padding: 14px 8px; }
-  .ind-icon { font-size: 20px; }
+  .ind-chip { padding: 12px 8px; }
   .ind-name { font-size: 10px; }
 
-  #tecnologias { padding: 56px 20px; }
-  .tech-track { gap: 20px; }
-  .tech-item { width: calc(25% - 15px); min-width: 60px; }
+  /* Tech */
+  #tecnologias { padding: 48px 20px; }
+  .tech-track { gap: 16px; }
+  .tech-item { width: calc(25% - 12px); min-width: 56px; }
   .tech-icon-wrap { width: 44px; height: 44px; }
-  .tech-name { font-size: 10px; }
+  .tech-name { font-size: 9px; }
 
-  .equipo-layout { grid-template-columns: 1fr; gap: 20px; }
-  .founder-card { padding: 32px 24px; }
+  /* Equipo — stack en mobile */
+  #equipo > div[style*="grid"] { grid-template-columns: 1fr !important; }
+  .equipo-layout { margin-top: 32px; }
+  .founder-card { grid-template-columns: 1fr; }
+  .founder-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 24px 20px; }
+  .founder-right { padding: 20px; }
 
+  /* Soporte — stack en mobile */
+  #soporte > div[style*="grid"] { grid-template-columns: 1fr !important; }
+  .soporte-layout { grid-template-columns: 1fr !important; }
+  .ticket-form-body { padding: 24px 20px; }
+  .ticket-form-header { padding: 18px 20px; flex-wrap: wrap; gap: 10px; }
+  .ticket-row { grid-template-columns: 1fr; gap: 0; }
+  .login-sub { font-size: 12px; }
+
+  /* Diagnóstico */
   .diag-layout { grid-template-columns: 1fr; gap: 40px; }
-  .diag-form { padding: 32px 24px; }
+  .diag-form { padding: 28px 20px; }
 
+  /* Contacto */
   #contacto { padding: 80px 20px; }
-  .wa-btn-big { width: 100%; justify-content: center; padding: 16px 24px; }
+  .wa-btn-big { width: 100%; justify-content: center; padding: 16px; }
   .contacto-info { flex-direction: column; gap: 12px; align-items: center; }
-  .cta-actions { flex-direction: column; align-items: center; }
 
-  footer { padding: 36px 20px; flex-direction: column; align-items: flex-start; gap: 28px; }
-  .footer-links { flex-wrap: wrap; gap: 16px; }
+  /* Footer */
+  footer { padding: 36px 20px; flex-direction: column; align-items: flex-start; gap: 24px; }
+  .footer-links { flex-wrap: wrap; gap: 14px; }
 }
 
+/* ── SMALL MOBILE 480px ── */
 @media (max-width: 480px) {
-  .hero h1 { font-size: clamp(30px, 8vw, 44px); }
-  .metrics-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: clamp(28px, 8vw, 38px); }
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
   .industrias-grid { grid-template-columns: repeat(2, 1fr); }
-  .tech-item { width: calc(33% - 14px); }
-  .s-title { font-size: clamp(28px, 7vw, 40px); }
+  .tech-item { width: calc(33% - 10px); }
+  .services-grid { grid-template-columns: 1fr; }
 }
 
-/* iOS Safari specific */
+/* ── iOS Safari ── */
 @supports (-webkit-touch-callout: none) {
   .hero { min-height: -webkit-fill-available; }
-  .btn-verde, .btn-next, .wa-btn-big {
-    -webkit-appearance: none;
-    border-radius: 2px;
+  .btn-verde, .btn-next, .wa-btn-big, .btn-login, .btn-ticket {
+    -webkit-appearance: none; border-radius: 2px;
   }
-  .form-input {
-    font-size: 16px; /* prevents zoom on focus in iOS */
+  .form-input, .login-input, .ticket-input {
+    font-size: 16px;
   }
 }
 
@@ -1807,44 +1850,51 @@ textarea.ticket-input {
 
 <!-- ══════════════════ EQUIPO ══════════════════ -->
 <section id="equipo">
-  <div class="reveal">
-    <div class="s-eyebrow">Nosotras</div>
-    <h2 class="s-title" style="color:#ffffff">Ingeniería con <em style="color:#ffffff;font-style:italic">intuición</em></h2>
-    <p class="s-desc" style="color:rgba(245,242,237,0.5)">Dos fundadoras con visión técnica y estratégica. Construimos ingenIA para democratizar la automatización sin sacrificar calidad ni consultoría de alto valor.</p>
-  </div>
-  <div class="equipo-layout reveal">
-    <div class="founder-card">
-      <div class="founder-left">
-        <div class="founder-name">Angélica Salas</div>
-        <div class="founder-role">Co-fundadora · Soluciones Low-Code &amp; No-Code</div>
+  <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start">
+
+    <!-- LEFT: founder cards -->
+    <div class="equipo-layout reveal" style="margin-top:0">
+      <div class="founder-card">
+        <div class="founder-left">
+          <div class="founder-name">Angélica Salas</div>
+          <div class="founder-role">Co-fundadora · Soluciones Low-Code &amp; No-Code</div>
+        </div>
+        <div class="founder-right">
+          <p class="founder-bio">Especialista en diseño e implementación de soluciones Low-Code y No-Code, y automatización empresarial. Convierte la complejidad operativa en sistemas ágiles que simplemente funcionan desde el primer día.</p>
+        </div>
       </div>
-      <div class="founder-right">
-        <p class="founder-bio">Especialista en diseño e implementación de soluciones Low-Code y No-Code, y automatización empresarial. Convierte la complejidad operativa en sistemas ágiles que simplemente funcionan desde el primer día.</p>
+      <div class="founder-card">
+        <div class="founder-left">
+          <div class="founder-name">Viviana Velandia</div>
+          <div class="founder-role">Co-fundadora · Estrategia y Operaciones</div>
+        </div>
+        <div class="founder-right">
+          <p class="founder-bio">Estratega empresarial con visión en operaciones y transformación digital. Traduce las necesidades del cliente en soluciones de automatización con impacto real y medible en la eficiencia operativa.</p>
+        </div>
       </div>
     </div>
-    <div class="founder-card">
-      <div class="founder-left">
-        <div class="founder-name">Viviana Velandia</div>
-        <div class="founder-role">Co-fundadora · Estrategia y Operaciones</div>
+
+    <!-- RIGHT: title + desc + valores -->
+    <div class="reveal">
+      <div class="s-eyebrow">Nosotras</div>
+      <h2 class="s-title" style="color:#ffffff">Ingeniería con <em style="color:#ffffff;font-style:italic">intuición</em></h2>
+      <p class="s-desc" style="color:rgba(245,242,237,0.7);margin-bottom:40px">Dos fundadoras con visión técnica y estratégica. Construimos ingenIA para democratizar la automatización sin sacrificar calidad ni consultoría de alto valor.</p>
+      <div class="valores-wrap">
+        <div class="valor-item">
+          <div class="valor-dot"></div>
+          <div class="valor-text"><strong>Resultados, no herramientas.</strong> Hablamos de tiempo recuperado, no de Zapier o Make.</div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-dot"></div>
+          <div class="valor-text"><strong>Entregables que funcionan.</strong> Sistemas desplegados y operando — no código suelto ni manuales técnicos.</div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-dot"></div>
+          <div class="valor-text"><strong>Socias estratégicas.</strong> No somos proveedoras. Somos parte de tu equipo de transformación digital.</div>
+        </div>
       </div>
-      <div class="founder-right">
-        <p class="founder-bio">Estratega empresarial con visión en operaciones y transformación digital. Traduce las necesidades del cliente en soluciones de automatización con impacto real y medible en la eficiencia operativa.</p>
-      </div>
     </div>
-  </div>
-  <div class="valores-wrap reveal" style="max-width:600px;margin-top:48px">
-    <div class="valor-item">
-      <div class="valor-dot"></div>
-      <div class="valor-text"><strong>Resultados, no herramientas.</strong> Hablamos de tiempo recuperado, no de Zapier o Make.</div>
-    </div>
-    <div class="valor-item">
-      <div class="valor-dot"></div>
-      <div class="valor-text"><strong>Entregables que funcionan.</strong> Sistemas desplegados y operando — no código suelto ni manuales técnicos.</div>
-    </div>
-    <div class="valor-item">
-      <div class="valor-dot"></div>
-      <div class="valor-text"><strong>Socias estratégicas.</strong> No somos proveedoras. Somos parte de tu equipo de transformación digital.</div>
-    </div>
+
   </div>
 </section>
 
@@ -1976,83 +2026,37 @@ textarea.ticket-input {
 
 <!-- ══════════════════ SOPORTE / TICKETS ══════════════════ -->
 <section id="soporte">
-  <div class="soporte-layout">
+  <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:start">
 
     <!-- LEFT: ticket form -->
-    <div class="ticket-form-wrap reveal" id="ticketFormWrap">
+    
 
-      <!-- Header con empresa logueada -->
-      <div class="ticket-form-header">
-        <div>
-          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px">Cliente activo</div>
-          <div class="ticket-empresa-name" id="ticketEmpresaName">—</div>
+    <!-- RIGHT: info + login -->
+    <div class="reveal">
+      <div class="s-eyebrow">Portal de clientes</div>
+      <h2 class="s-title">Soporte<br><em>técnico</em></h2>
+      <p class="s-desc" style="margin-bottom:40px">Registra tu solicitud de soporte. Nuestro equipo la recibirá de inmediato y te responderá a la mayor brevedad.</p>
+      <div class="ticket-login" id="ticketLogin">
+        <h3>Acceso clientes</h3>
+        <p class="login-sub">Ingresa con el nombre de tu empresa y tu NIT como contraseña.</p>
+        <div class="login-field">
+          <label>Empresa</label>
+          <input type="text" class="login-input" id="loginEmpresa" placeholder="Nombre de tu empresa" autocomplete="organization">
         </div>
-        <div style="display:flex;align-items:center;gap:12px">
-          <span class="ticket-badge">Portal de soporte</span>
-          <button class="btn-logout" onclick="logoutTicket()">Salir</button>
+        <div class="login-field">
+          <label>NIT (contraseña)</label>
+          <input type="password" class="login-input" id="loginNit" placeholder="NIT sin dígito de verificación">
         </div>
-      </div>
-
-      <!-- Formulario -->
-      <div class="ticket-form-body" id="ticketFormBody">
-        <div class="ticket-row">
-          <div class="ticket-field">
-            <label>Nombre completo *</label>
-            <input type="text" class="ticket-input" id="tNombre" placeholder="Tu nombre">
-          </div>
-          <div class="ticket-field">
-            <label>Cargo *</label>
-            <input type="text" class="ticket-input" id="tCargo" placeholder="Tu cargo en la empresa">
-          </div>
+        <div class="login-error" id="loginError">
+          Empresa o NIT no reconocidos. Contacta a tu asesor de ingenIA.
         </div>
-        <div class="ticket-row">
-          <div class="ticket-field">
-            <label>Email *</label>
-            <input type="email" class="ticket-input" id="tEmail" placeholder="correo@empresa.com">
-          </div>
-          <div class="ticket-field">
-            <label>Celular</label>
-            <input type="tel" class="ticket-input" id="tCelular" placeholder="3001234567">
-          </div>
-        </div>
-        <div class="ticket-field">
-          <label>Descripción del problema *</label>
-          <textarea class="ticket-input" id="tDescripcion" placeholder="Describe detalladamente lo que está ocurriendo, cuándo empezó y qué pasos has seguido..."></textarea>
-        </div>
-        <div class="ticket-field">
-          <label>Imágenes de soporte (máx. 2)</label>
-          <div class="upload-area" id="uploadArea">
-            <input type="file" id="tImagenes" accept="image/*" multiple onchange="handleImages(this)">
-            <div class="upload-icon">🖼️</div>
-            <div class="upload-text">
-              <strong>Arrastra imágenes aquí</strong> o haz clic para seleccionar<br>
-              <span style="font-size:11px;color:#bbb">JPG, PNG · Máx. 2 imágenes · Se comprimen automáticamente</span>
-            </div>
-          </div>
-          <div class="image-previews" id="imagePreviews"></div>
-        </div>
-
-        <button class="btn-ticket" id="btnTicket" onclick="enviarTicket()">
-          <span id="btnTicketText">Enviar solicitud de soporte</span>
-          <div class="spinner" id="ticketSpinner"></div>
-        </button>
-      </div>
-
-      <!-- Confirmación -->
-      <div class="ticket-confirm" id="ticketConfirm">
-        <div style="width:72px;height:72px;background:rgba(0,99,90,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:30px">✅</div>
-        <div class="ticket-num" id="ticketNumDisplay">—</div>
-        <div class="ticket-num-label">Número de ticket</div>
-        <p style="font-size:14px;color:var(--texto-suave);line-height:1.8;margin-bottom:28px">
-          Tu solicitud fue registrada exitosamente.<br>
-          Nuestro equipo te contactará pronto al email y celular indicados.
+        <button class="btn-login" onclick="loginTicket()">Ingresar →</button>
+        <p style="font-size:11px;color:#aaa;text-align:center;margin-top:16px">
+          ¿No tienes acceso? Escríbenos a <a href="mailto:info@ingeniaco.com" style="color:var(--verde)">info@ingeniaco.com</a>
         </p>
-        <button onclick="nuevoTicket()" style="background:none;border:1px solid var(--borde);color:var(--morado);padding:11px 28px;border-radius:2px;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s" onmouseover="this.style.background='var(--verde)';this.style.color='white';this.style.borderColor='var(--verde)'" onmouseout="this.style.background='none';this.style.color='var(--morado)';this.style.borderColor='var(--borde)'">
-          Registrar otro ticket
-        </button>
       </div>
-
     </div>
+
   </div>
 </section>
 
@@ -2292,8 +2296,11 @@ function enviarLead() {
 
 // ─── Mobile menu ───
 function toggleMobileMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
-  document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+  const menu = document.getElementById('mobileMenu');
+  const btn  = document.querySelector('.nav-hamburger');
+  menu.classList.toggle('open');
+  if (btn) btn.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
 }
 
 // ─── Lead form ───
