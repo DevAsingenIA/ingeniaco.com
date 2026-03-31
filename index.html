@@ -148,6 +148,7 @@ nav.scrolled { padding: 14px 64px; }
   display: flex; flex-direction: column;
   justify-content: center; align-items: flex-start;
   padding: 140px 64px 80px;
+  padding-right: 42%;
   position: relative; z-index: 1;
   overflow: hidden;
 }
@@ -233,33 +234,38 @@ nav.scrolled { padding: 14px 64px; }
 
 /* Floating metrics */
 .hero-metrics {
-  position: absolute; right: 64px; bottom: 100px;
-  display: flex; flex-direction: column; gap: 12px;
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 38%;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 140px 64px 80px 40px;
   animation: fadeUp 0.8s 0.8s both;
 }
 
 .metric-pill {
   background: var(--blanco);
   border: 1px solid var(--borde);
-  border-radius: 4px;
-  padding: 18px 24px;
-  display: flex; align-items: center; gap: 16px;
-  box-shadow: 0 4px 20px rgba(0,99,90,0.06);
+  border-radius: 6px;
+  padding: 28px 36px;
+  display: flex; align-items: center; gap: 24px;
+  box-shadow: 0 8px 32px rgba(0,99,90,0.08);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .metric-pill:hover {
-  transform: translateX(-6px);
-  box-shadow: 0 8px 32px rgba(0,99,90,0.12);
+  transform: translateX(-8px);
+  box-shadow: 0 16px 48px rgba(0,99,90,0.14);
 }
 .metric-num {
   font-family: 'Playfair Display', serif;
-  font-size: 28px; font-weight: 400;
+  font-size: 52px; font-weight: 400;
   color: var(--verde); line-height: 1;
+  flex-shrink: 0;
 }
 .metric-label {
-  font-size: 12px; font-weight: 300;
-  color: var(--texto-suave); line-height: 1.4;
-  max-width: 120px;
+  font-size: 15px; font-weight: 300;
+  color: var(--texto-suave); line-height: 1.5;
+  max-width: 160px;
 }
 
 /* scroll cue */
@@ -1603,7 +1609,7 @@ textarea.ticket-input {
         </div>
         <button class="btn-login" onclick="loginTicket()">Ingresar →</button>
         <p style="font-size:11px;color:#aaa;text-align:center;margin-top:16px">
-          ¿No tienes acceso? Escríbenos a <a href="mailto:info@ingeniaco.com" style="color:var(--verde)">info@ingeniaco.com</a>
+          ¿No tienes acceso? Escríbenos a <a href="/cdn-cgi/l/email-protection#b8d1d6ded7f8d1d6dfddd6d1d9dbd796dbd7d5" style="color:var(--verde)"><span class="__cf_email__" data-cfemail="442d2a222b042d2a23212a2d25272b6a272b29">[email&#160;protected]</span></a>
         </p>
       </div>
     </div>
@@ -2052,7 +2058,7 @@ textarea.ticket-input {
         </div>
         <button class="btn-login" onclick="loginTicket()">Ingresar →</button>
         <p style="font-size:11px;color:#aaa;text-align:center;margin-top:16px">
-          ¿No tienes acceso? Escríbenos a <a href="mailto:info@ingeniaco.com" style="color:var(--verde)">info@ingeniaco.com</a>
+          ¿No tienes acceso? Escríbenos a <a href="/cdn-cgi/l/email-protection#0a63646c654a63646d6f64636b696524696567" style="color:var(--verde)"><span class="__cf_email__" data-cfemail="90f9fef6ffd0f9fef7f5fef9f1f3ffbef3fffd">[email&#160;protected]</span></a>
         </p>
       </div>
     </div>
@@ -2072,7 +2078,7 @@ textarea.ticket-input {
     </a>
     <div class="contacto-info">
       <div class="ci-item">📍 Bucaramanga, Colombia</div>
-      <div class="ci-item">✉️ <a href="mailto:info@ingeniaco.com">info@ingeniaco.com</a></div>
+      <div class="ci-item">✉️ <a href="/cdn-cgi/l/email-protection#2841464e476841464f4d4641494b47064b4745"><span class="__cf_email__" data-cfemail="6801060e072801060f0d0601090b07460b0705">[email&#160;protected]</span></a></div>
       <div class="ci-item">🌐 <a href="https://ingeniaco.com">ingeniaco.com</a></div>
     </div>
   </div>
@@ -2096,7 +2102,7 @@ textarea.ticket-input {
 </footer>
 
 <!-- ══════════════════ JAVASCRIPT ══════════════════ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ─── Cursor ───
 const dot = document.getElementById('cursorDot');
 const ring = document.getElementById('cursorRing');
@@ -2537,22 +2543,3 @@ async function enviarTicket() {
 
     document.getElementById('ticketNumDisplay').textContent = ticketNum;
     document.getElementById('ticketFormBody').style.display = 'none';
-    document.getElementById('ticketConfirm').classList.add('show');
-  }, 1200);
-}
-
-function nuevoTicket() {
-  // Reset form
-  ['tNombre','tCargo','tEmail','tCelular','tDescripcion'].forEach(id => {
-    document.getElementById(id).value = '';
-  });
-  ticketImages = [];
-  renderPreviews();
-  document.getElementById('tImagenes').value = '';
-  document.getElementById('ticketConfirm').classList.remove('show');
-  document.getElementById('ticketFormBody').style.display = 'block';
-}
-
-</script>
-</body>
-</html>
