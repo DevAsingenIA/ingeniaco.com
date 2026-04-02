@@ -1072,6 +1072,16 @@ img { -webkit-user-select: none; user-select: none; }
   .industrias-grid { grid-template-columns: repeat(4, 1fr); }
   #tecnologias { padding: 64px 32px; }
   footer { padding: 36px 32px; }
+  #soporte > div[style*="grid"] { grid-template-columns: 1fr !important; }
+  .soporte-layout { grid-template-columns: 1fr !important; }
+  .diag-layout { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* ── TABLET PORTRAIT 900px ── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .hero h1 { font-size: clamp(38px, 7vw, 60px); }
 }
 
 /* ── MOBILE 768px ── */
@@ -1481,7 +1491,7 @@ textarea.ticket-input {
   <h1>Transformamos la<br>complejidad técnica<br>en <em>fluidez empresarial</em></h1>
   <p class="hero-sub">Diseñamos e implementamos sistemas de automatización a medida para micro y medianas empresas. No solo código — entregamos procesos que funcionan desde el primer día.</p>
   <div class="hero-actions">
-    <a href="https://wa.me/573013901175?text=Hola%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20interesa%20un%20diagn%C3%B3stico%20de%20automatizaci%C3%B3n%20empresarial.%20Quiero%20mi%20diagnóstico%20gratuito" target="_blank" class="btn-verde">
+    <a href="https://wa.me/573013901175?text=Hola%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20interesa%20un%20diagn%C3%B3stico%20de%20automatizaci%C3%B3n%20empresarial.%20Quiero%20mi%20diagn%C3%B3stico%20de%20automatizaci%C3%B3n" target="_blank" class="btn-verde">
       <span>💬</span> Diagnóstico especializado
     </a>
     <a href="#servicios" class="btn-ghost">Ver servicios →</a>
@@ -1583,34 +1593,6 @@ textarea.ticket-input {
         <span class="srv-tag">Diagnóstico</span>
         <span class="srv-tag">Estrategia</span>
         <span class="srv-tag">Roadmap</span>
-      </div>
-    </div>
-
-    <!-- RIGHT: info + login -->
-    <div class="reveal">
-      <div class="s-eyebrow">Portal de clientes</div>
-      <h2 class="s-title">Soporte<br><em>técnico</em></h2>
-      <p class="s-desc" style="margin-bottom:40px">Registra tu solicitud de soporte. Nuestro equipo la recibirá de inmediato y te responderá a la mayor brevedad.</p>
-
-      <!-- LOGIN -->
-      <div class="ticket-login" id="ticketLogin">
-        <h3>Acceso clientes</h3>
-        <p class="login-sub">Ingresa con el nombre de tu empresa y tu NIT como contraseña.</p>
-        <div class="login-field">
-          <label>Empresa</label>
-          <input type="text" class="login-input" id="loginEmpresa" placeholder="Nombre de tu empresa" autocomplete="organization">
-        </div>
-        <div class="login-field">
-          <label>NIT (contraseña)</label>
-          <input type="password" class="login-input" id="loginNit" placeholder="NIT sin dígito de verificación">
-        </div>
-        <div class="login-error" id="loginError">
-          Empresa o NIT no reconocidos. Contacta a tu asesor de ingenIA.
-        </div>
-        <button class="btn-login" onclick="loginTicket()">Ingresar →</button>
-        <p style="font-size:11px;color:#aaa;text-align:center;margin-top:16px">
-          ¿No tienes acceso? Escríbenos a <a href="/cdn-cgi/l/email-protection#b8d1d6ded7f8d1d6dfddd6d1d9dbd796dbd7d5" style="color:var(--verde)"><span class="__cf_email__" data-cfemail="442d2a222b042d2a23212a2d25272b6a272b29">[email&#160;protected]</span></a>
-        </p>
       </div>
     </div>
 
@@ -2072,7 +2054,7 @@ textarea.ticket-input {
     <div class="s-eyebrow">Contacto</div>
     <h2 class="s-title" style="max-width:700px">¿Listo para dejar de hacer<br>lo mismo a <em style="color:#ffffff;font-style:italic">mano cada día?</em></h2>
     <p class="contacto-sub">Agenda un diagnóstico especializado de 30 minutos. Te mostramos exactamente qué procesos se pueden automatizar en tu empresa y cuánto tiempo recuperarías.</p>
-    <a href="https://wa.me/573013901175?text=Hola%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20interesa%20un%20diagn%C3%B3stico%20de%20automatizaci%C3%B3n%20empresarial.%20Vi%20su%20página%20y%20quiero%20agendar%20un%20diagnóstico%20gratuito" target="_blank" class="wa-btn-big">
+    <a href="https://wa.me/573013901175?text=Hola%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20interesa%20un%20diagn%C3%B3stico%20de%20automatizaci%C3%B3n%20empresarial.%20Vi%20su%20p%C3%A1gina%20y%20quiero%20agendar%20un%20diagn%C3%B3stico%20de%20automatizaci%C3%B3n" target="_blank" class="wa-btn-big">
       <span style="font-size:20px">💬</span>
       Escribir por WhatsApp
     </a>
@@ -2307,38 +2289,6 @@ function toggleMobileMenu() {
   menu.classList.toggle('open');
   if (btn) btn.classList.toggle('open');
   document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-}
-
-// ─── Lead form ───
-function checkLead() {
-  const n = document.getElementById('leadNombre').value.trim();
-  const e = document.getElementById('leadEmail').value.trim();
-  const c = document.getElementById('leadCelular').value.trim();
-  document.getElementById('btnEnviarLead').disabled = !(n && e && c);
-}
-
-function enviarLead() {
-  const nombre = document.getElementById('leadNombre').value.trim();
-  const empresa = document.getElementById('leadEmpresa').value.trim();
-  const email = document.getElementById('leadEmail').value.trim();
-  const celular = document.getElementById('leadCelular').value.trim();
-  const proceso = document.getElementById('leadProceso').value.trim();
-
-  const msg = encodeURIComponent(
-    `Hola, vengo de tu página web y me interesa un diagnóstico de automatización empresarial. Mi nombre es: ${nombre}${empresa ? ' de ' + empresa : ''}.`
-  );
-
-  window.open(`https://wa.me/573013901175?text=${msg}`, '_blank');
-
-  // Show confirmation
-  document.getElementById('diagSteps').innerHTML = `
-    <div style="text-align:center;padding:40px 20px">
-      <div style="font-size:48px;margin-bottom:20px">✅</div>
-      <h3 style="font-family:'Playfair Display',serif;color:var(--morado);margin-bottom:12px">¡Solicitud enviada!</h3>
-      <p style="font-size:13px;color:var(--texto-suave);line-height:1.7">Te contactaremos en menos de 24 horas hábiles para confirmar tu sesión de diagnóstico.<br><br>
-      <strong style="color:var(--verde)">Duración: 1 hora · Te contactamos en 24h</strong></p>
-    </div>
-  `;
 }
 
 // ─── Smooth anchor ───
