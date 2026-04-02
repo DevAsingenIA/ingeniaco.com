@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ingenIA — Automatización Empresarial Inteligente</title>
+<meta name="description" content="En ingenIA desarrollamos sistemas y agentes automatizados con Inteligencia Artificial y Low-Code. Optimizamos procesos para las PYMES de Colombia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -148,7 +149,6 @@ nav.scrolled { padding: 14px 64px; }
   display: flex; flex-direction: column;
   justify-content: center; align-items: flex-start;
   padding: 140px 64px 80px;
-  padding-right: 42%;
   position: relative; z-index: 1;
   overflow: hidden;
 }
@@ -234,38 +234,33 @@ nav.scrolled { padding: 14px 64px; }
 
 /* Floating metrics */
 .hero-metrics {
-  position: absolute; right: 0; top: 0; bottom: 0;
-  width: 38%;
-  display: flex; flex-direction: column;
-  justify-content: center;
-  gap: 16px;
-  padding: 140px 64px 80px 40px;
+  position: absolute; right: 64px; bottom: 100px;
+  display: flex; flex-direction: column; gap: 12px;
   animation: fadeUp 0.8s 0.8s both;
 }
 
 .metric-pill {
   background: var(--blanco);
   border: 1px solid var(--borde);
-  border-radius: 6px;
-  padding: 28px 36px;
-  display: flex; align-items: center; gap: 24px;
-  box-shadow: 0 8px 32px rgba(0,99,90,0.08);
+  border-radius: 4px;
+  padding: 18px 24px;
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: 0 4px 20px rgba(0,99,90,0.06);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .metric-pill:hover {
-  transform: translateX(-8px);
-  box-shadow: 0 16px 48px rgba(0,99,90,0.14);
+  transform: translateX(-6px);
+  box-shadow: 0 8px 32px rgba(0,99,90,0.12);
 }
 .metric-num {
   font-family: 'Playfair Display', serif;
-  font-size: 52px; font-weight: 400;
+  font-size: 28px; font-weight: 400;
   color: var(--verde); line-height: 1;
-  flex-shrink: 0;
 }
 .metric-label {
-  font-size: 15px; font-weight: 300;
-  color: var(--texto-suave); line-height: 1.5;
-  max-width: 160px;
+  font-size: 12px; font-weight: 300;
+  color: var(--texto-suave); line-height: 1.4;
+  max-width: 120px;
 }
 
 /* scroll cue */
@@ -1442,6 +1437,43 @@ textarea.ticket-input {
 }
 
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "ingenIA",
+  "description": "Consultoría estratégica y desarrollo de sistemas automatizados con IA y Low-Code para las PYMES de Colombia.",
+  "image": "https://ingeniaco.com/logo.png", 
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Colombia",
+    "addressRegion": "Santander",
+    "postalCode": "680002",
+    "addressCountry": "CO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "7.1193",
+    "longitude": "-73.1227"
+  },
+  "url": "https://ingeniaco.com",
+  "telephone": "+573013901175",
+  "priceRange": "$$",
+  "serviceType": [
+    "Automatización de procesos industriales",
+    "Implementación de Agentes de IA",
+    "Consultoría Low-Code y No-Code",
+    "Integración de sistemas empresariales"
+  ],
+  "knowsAbout": [
+    "Inteligencia Artificial",
+    "Eficiencia Operativa",
+    "Automatizacion empresarial,
+    "micro y medianas empresas Pymes",
+    "Automatización con inteligencia artificial"
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -1536,6 +1568,7 @@ textarea.ticket-input {
       <div class="srv-tags">
         <span class="srv-tag">Google Sheets</span>
         <span class="srv-tag">Make.com</span>
+        <span class="srv-tag">n8n.com</span>
         <span class="srv-tag">Webhooks</span>
       </div>
     </div>
@@ -1595,6 +1628,7 @@ textarea.ticket-input {
         <span class="srv-tag">Roadmap</span>
       </div>
     </div>
+
 
   </div>
 </section>
@@ -1866,7 +1900,7 @@ textarea.ticket-input {
     <div class="reveal">
       <div class="s-eyebrow">Nosotras</div>
       <h2 class="s-title" style="color:#ffffff">Ingeniería con <em style="color:#ffffff;font-style:italic">intuición</em></h2>
-      <p class="s-desc" style="color:rgba(245,242,237,0.7);margin-bottom:40px">Dos fundadoras con visión técnica y estratégica. Construimos ingenIA para democratizar la automatización sin sacrificar calidad ni consultoría de alto valor.</p>
+      <p class="s-desc" style="color:rgba(245,242,237,0.7);margin-bottom:40px">Dos fundadoras con visión técnica y estratégica que sumamos **más de 26 años de experiencia combinada en el sector industrial**. Construimos ingenIA para democratizar la automatización sin sacrificar calidad. Somos el **puente estratégico** que traduce la visión del gerente en soluciones técnicas de IT precisas, garantizando que cada automatización cumpla con el objetivo de negocio.</p>
       <div class="valores-wrap">
         <div class="valor-item">
           <div class="valor-dot"></div>
@@ -2040,7 +2074,7 @@ textarea.ticket-input {
         </div>
         <button class="btn-login" onclick="loginTicket()">Ingresar →</button>
         <p style="font-size:11px;color:#aaa;text-align:center;margin-top:16px">
-          ¿No tienes acceso? Escríbenos a <a href="/cdn-cgi/l/email-protection#0a63646c654a63646d6f64636b696524696567" style="color:var(--verde)"><span class="__cf_email__" data-cfemail="90f9fef6ffd0f9fef7f5fef9f1f3ffbef3fffd">[email&#160;protected]</span></a>
+          ¿No tienes acceso? Escríbenos a <a href="mailto:info@ingeniaco.com" style="color:var(--verde)">info@ingeniaco.com</a>
         </p>
       </div>
     </div>
@@ -2060,7 +2094,7 @@ textarea.ticket-input {
     </a>
     <div class="contacto-info">
       <div class="ci-item">📍 Bucaramanga, Colombia</div>
-      <div class="ci-item">✉️ <a href="/cdn-cgi/l/email-protection#2841464e476841464f4d4641494b47064b4745"><span class="__cf_email__" data-cfemail="6801060e072801060f0d0601090b07460b0705">[email&#160;protected]</span></a></div>
+      <div class="ci-item">✉️ <a href="mailto:info@ingeniaco.com">info@ingeniaco.com</a></div>
       <div class="ci-item">🌐 <a href="https://ingeniaco.com">ingeniaco.com</a></div>
     </div>
   </div>
@@ -2084,7 +2118,7 @@ textarea.ticket-input {
 </footer>
 
 <!-- ══════════════════ JAVASCRIPT ══════════════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ─── Cursor ───
 const dot = document.getElementById('cursorDot');
 const ring = document.getElementById('cursorRing');
@@ -2493,3 +2527,22 @@ async function enviarTicket() {
 
     document.getElementById('ticketNumDisplay').textContent = ticketNum;
     document.getElementById('ticketFormBody').style.display = 'none';
+    document.getElementById('ticketConfirm').classList.add('show');
+  }, 1200);
+}
+
+function nuevoTicket() {
+  // Reset form
+  ['tNombre','tCargo','tEmail','tCelular','tDescripcion'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  ticketImages = [];
+  renderPreviews();
+  document.getElementById('tImagenes').value = '';
+  document.getElementById('ticketConfirm').classList.remove('show');
+  document.getElementById('ticketFormBody').style.display = 'block';
+}
+
+</script>
+</body>
+</html>
