@@ -1182,6 +1182,247 @@ img { -webkit-user-select: none; user-select: none; }
 
 
 /* ═══════════════════════════════════════
+   BACK TO TOP
+═══════════════════════════════════════ */
+.back-to-top {
+  position: fixed;
+  right: -28px;
+  bottom: 38%;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transform: rotate(90deg);
+  transform-origin: right center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.back-to-top .btt-line {
+  width: 52px;
+  height: 1px;
+  background: var(--texto);
+  flex-shrink: 0;
+}
+.back-to-top .btt-text {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--texto);
+  font-weight: 500;
+  white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ═══════════════════════════════════════
+   FAQ
+═══════════════════════════════════════ */
+#faq { background: var(--crema); }
+
+.faq-list {
+  max-width: 760px;
+  margin: 48px auto 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--borde);
+}
+
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--texto);
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  transition: color 0.2s;
+}
+.faq-q:hover { color: var(--verde); }
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--verde);
+  transition: transform 0.3s ease;
+  font-style: normal;
+}
+
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.3s ease;
+}
+.faq-item.open .faq-a {
+  max-height: 400px;
+}
+.faq-a p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--texto-suave);
+  padding-bottom: 20px;
+}
+
+/* ═══════════════════════════════════════
+   POLÍTICA DE PRIVACIDAD — MODAL
+═══════════════════════════════════════ */
+.privacy-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,10,30,0.6);
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+  overflow-y: auto;
+}
+.privacy-overlay.active { display: flex; }
+
+.privacy-modal {
+  background: var(--crema);
+  max-width: 800px;
+  width: 100%;
+  border-radius: 4px;
+  padding: 56px 64px;
+  position: relative;
+  margin: auto;
+}
+.privacy-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  background: none; border: none;
+  font-size: 22px; cursor: pointer;
+  color: var(--texto-suave);
+  line-height: 1;
+  transition: color 0.2s;
+}
+.privacy-close:hover { color: var(--texto); }
+
+.privacy-modal h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 400;
+  color: var(--texto);
+  margin-bottom: 8px;
+}
+.privacy-modal .priv-date {
+  font-size: 12px;
+  color: var(--texto-suave);
+  margin-bottom: 32px;
+  display: block;
+}
+.privacy-modal h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--texto);
+  margin: 32px 0 12px;
+}
+.privacy-modal p, .privacy-modal li {
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: var(--texto-suave);
+  margin-bottom: 10px;
+}
+.privacy-modal ul {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+.privacy-modal li { margin-bottom: 6px; }
+
+@media (max-width: 600px) {
+  .privacy-modal { padding: 40px 24px; }
+}
+
+/* ═══════════════════════════════════════
+   COOKIE BANNER
+═══════════════════════════════════════ */
+.cookie-banner {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 1500;
+  background: #1a0f1e;
+  padding: 20px 40px;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.cookie-banner.visible { display: flex; }
+.cookie-banner p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+  flex: 1;
+  min-width: 240px;
+}
+.cookie-banner p a {
+  color: rgba(0,180,160,0.85);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.cookie-btns {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.cookie-btn {
+  padding: 9px 22px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+.cookie-btn-accept {
+  background: var(--verde);
+  color: #fff;
+  border-color: var(--verde);
+}
+.cookie-btn-accept:hover { background: var(--verde-light); }
+.cookie-btn-decline {
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  border-color: rgba(255,255,255,0.2);
+}
+.cookie-btn-decline:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+@media (max-width: 600px) {
+  .cookie-banner { padding: 20px 24px; }
+  .cookie-btns { width: 100%; }
+  .cookie-btn { flex: 1; text-align: center; }
+}
+
+/* ═══════════════════════════════════════
    PORTAL DE SOPORTE / TICKETS
 ═══════════════════════════════════════ */
 #soporte { background: var(--crema-dark); }
@@ -2017,6 +2258,7 @@ textarea.ticket-input {
             <button class="btn-next" id="btnEnviarLead" onclick="enviarLead()" disabled>Contactarme →</button>
           </div>
           <p style="font-size:11px;color:#aaa;text-align:center;margin-top:12px">Te contactamos en menos de 24 horas hábiles</p>
+          <p style="font-size:10px;color:#bbb;text-align:center;margin-top:8px;line-height:1.6">Al enviar este formulario, aceptas el tratamiento de tus datos conforme a nuestra <a href="#" onclick="openPrivacy(event)" style="color:var(--verde);text-decoration:underline">Política de Privacidad</a> (Ley 1581 de 2012).</p>
         </div>
       </div>
 
@@ -2076,9 +2318,85 @@ textarea.ticket-input {
         <p style="font-size:11px;color:#aaa;text-align:center;margin-top:16px">
           ¿No tienes acceso? Escríbenos a <a href="mailto:info@ingeniaco.com" style="color:var(--verde)">info@ingeniaco.com</a>
         </p>
+        <p style="font-size:10px;color:#bbb;text-align:center;margin-top:10px;line-height:1.6">Los datos ingresados se tratan conforme a nuestra <a href="#" onclick="openPrivacy(event)" style="color:var(--verde);text-decoration:underline">Política de Privacidad</a>.</p>
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ══════════════════ FAQ ══════════════════ -->
+<section id="faq">
+  <div class="reveal" style="max-width:900px;margin:0 auto">
+    <div class="s-eyebrow">Preguntas frecuentes</div>
+    <h2 class="s-title">Resolvemos<br><em>tus dudas</em></h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Qué es la automatización empresarial con Inteligencia Artificial?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Es el uso de tecnologías como agentes de IA, flujos automatizados y sistemas Low-Code para ejecutar tareas repetitivas, procesar información y tomar decisiones sin intervención humana constante. En ingenIA diseñamos soluciones a medida que eliminan cuellos de botella operativos, reducen errores y liberan a tu equipo para enfocarse en lo que realmente genera valor.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Sus servicios son solo para empresas grandes?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>No. Nos especializamos en PYMES colombianas. Nuestras soluciones están diseñadas para ser escalables y accesibles: comenzamos con un diagnóstico que identifica exactamente qué procesos tienen mayor potencial de automatización según el tamaño y presupuesto de tu empresa, y construimos desde ahí.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cuánto tiempo toma implementar un proyecto de automatización?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Depende del alcance. Un flujo automatizado sencillo (como envío de reportes o notificaciones automáticas) puede estar listo en 2 a 3 semanas. Un sistema integral con múltiples integraciones y agentes de IA puede tomar entre 6 y 12 semanas. Siempre establecemos tiempos claros desde la propuesta inicial.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Qué pasa si ya tengo sistemas como ERP o CRM en uso?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Perfecto, trabajamos sobre lo que ya tienes. Nuestras soluciones se integran con los sistemas existentes: SAP, Siigo, Zoho, HubSpot, Google Workspace, entre otros. No necesitas reemplazar tu infraestructura actual; la potenciamos con automatización e IA.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Necesito conocimientos técnicos para usar las soluciones implementadas?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>No. Diseñamos cada solución para que sea intuitiva y fácil de operar por el equipo de tu empresa. Además, incluimos capacitación completa y documentación clara como parte del proceso de entrega. Nuestro objetivo es que tu equipo sea autónomo desde el primer día.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Los datos de mi empresa están seguros?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Sí. Trabajamos bajo los principios de la Ley 1581 de 2012 de Protección de Datos Personales de Colombia. Toda la información que compartes con nosotros —tanto en el autodiagnóstico como en el portal de soporte— es confidencial, se almacena de forma segura y solo se utiliza para prestarte el servicio. Nunca la compartimos con terceros sin tu autorización.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cómo funciona el autodiagnóstico de automatización?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Es un formulario de 5 preguntas sobre tu empresa que nos permite calcular tu potencial de automatización. Al final recibes un puntaje con las áreas más críticas para automatizar y, si lo deseas, uno de nuestros asesores te contacta para profundizar en los resultados sin ningún costo ni compromiso.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Qué incluye el soporte técnico después de la implementación?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Ofrecemos soporte continuo a través de nuestro portal de clientes: puedes registrar solicitudes, reportar incidencias y solicitar ajustes. Dependiendo de tu plan, incluimos monitoreo proactivo, actualizaciones periódicas del sistema y sesiones de revisión para asegurarnos de que la solución siga funcionando de manera óptima a medida que tu empresa crece.</p></div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -2114,7 +2432,10 @@ textarea.ticket-input {
     <li><a href="#soporte">Soporte</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <div class="footer-copy">© 2026 ingenIA · Automatización Empresarial Inteligente</div>
+  <div class="footer-copy">
+    © 2026 ingenIA · Automatización Empresarial Inteligente &nbsp;·&nbsp;
+    <a href="#" onclick="openPrivacy(event)" style="color:rgba(255,255,255,0.3);text-decoration:underline;font-size:11px;letter-spacing:0.04em">Política de privacidad</a>
+  </div>
 </footer>
 
 <!-- ══════════════════ JAVASCRIPT ══════════════════ -->
@@ -2543,6 +2864,141 @@ function nuevoTicket() {
   document.getElementById('ticketFormBody').style.display = 'block';
 }
 
+
+
+// ─── FAQ Accordion ───
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ─── Back to Top ───
+const bttBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) bttBtn.classList.add('visible');
+  else bttBtn.classList.remove('visible');
+});
+
+// ─── Privacy Modal ───
+function openPrivacy(e) {
+  if (e) e.preventDefault();
+  document.getElementById('privacyOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closePrivacy() {
+  document.getElementById('privacyOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('privacyOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closePrivacy();
+});
+
+// ─── Cookie Banner ───
+(function() {
+  if (!localStorage.getItem('ingenia_cookies')) {
+    document.getElementById('cookieBanner').classList.add('visible');
+  }
+})();
+function acceptCookies() {
+  localStorage.setItem('ingenia_cookies', 'accepted');
+  document.getElementById('cookieBanner').classList.remove('visible');
+}
+function declineCookies() {
+  localStorage.setItem('ingenia_cookies', 'declined');
+  document.getElementById('cookieBanner').classList.remove('visible');
+}
+
 </script>
+
+<!-- ══════════════════ BACK TO TOP ══════════════════ -->
+<a href="#inicio" class="back-to-top" id="backToTop" aria-label="Volver al inicio">
+  <span class="btt-line"></span>
+  <span class="btt-text">Back to top</span>
+</a>
+
+<!-- ══════════════════ PRIVACY MODAL ══════════════════ -->
+<div class="privacy-overlay" id="privacyOverlay" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+  <div class="privacy-modal">
+    <button class="privacy-close" onclick="closePrivacy()" aria-label="Cerrar">×</button>
+    <h1 id="privacyTitle">Política de Privacidad y<br>Tratamiento de Datos</h1>
+    <span class="priv-date">Última actualización: abril de 2026</span>
+
+    <p>ingenIA (en adelante "nosotros", "nuestro" o "la empresa") gestiona este sitio web y los servicios digitales asociados, incluyendo el autodiagnóstico de automatización y el portal de soporte técnico. Esta Política describe cómo recopilamos, usamos y protegemos su información personal de conformidad con la <strong>Ley 1581 de 2012</strong> y el Decreto 1377 de 2013 sobre Protección de Datos Personales en Colombia.</p>
+
+    <h2>Información que recopilamos</h2>
+    <p>Cuando interactúa con nuestros servicios, podemos recopilar la siguiente información:</p>
+    <ul>
+      <li><strong>Datos de contacto:</strong> nombre completo, nombre de la empresa, correo electrónico, número de WhatsApp/teléfono.</li>
+      <li><strong>Datos empresariales:</strong> sector, número de empleados, procesos operativos, herramientas tecnológicas en uso. Estos datos se recopilan en el autodiagnóstico de automatización.</li>
+      <li><strong>Datos de acceso al portal:</strong> nombre de empresa y NIT, usados exclusivamente para autenticar el acceso al portal de soporte técnico de clientes activos.</li>
+      <li><strong>Datos técnicos:</strong> dirección IP, tipo de navegador, páginas visitadas, tiempo de sesión. Recopilados automáticamente mediante cookies y tecnologías similares.</li>
+    </ul>
+
+    <h2>Finalidad del tratamiento</h2>
+    <p>Usamos su información personal para los siguientes fines:</p>
+    <ul>
+      <li>Proveer, personalizar y mejorar nuestros servicios de consultoría y automatización empresarial.</li>
+      <li>Analizar los resultados del autodiagnóstico y contactarle con una propuesta personalizada cuando usted lo solicite.</li>
+      <li>Gestionar solicitudes de soporte técnico de clientes activos a través del portal.</li>
+      <li>Enviarle información relevante sobre nuestros servicios cuando usted haya otorgado su consentimiento expreso.</li>
+      <li>Cumplir con obligaciones legales y contractuales aplicables.</li>
+    </ul>
+
+    <h2>Base legal</h2>
+    <p>El tratamiento de sus datos se realiza con base en: (i) el consentimiento que usted otorga al diligenciar nuestros formularios; (ii) la ejecución del contrato de servicios cuando aplique; y (iii) el cumplimiento de obligaciones legales.</p>
+
+    <h2>Compartir información con terceros</h2>
+    <p>No vendemos ni cedemos su información personal a terceros con fines comerciales. Podemos compartir sus datos únicamente en los siguientes casos:</p>
+    <ul>
+      <li>Con proveedores de servicios tecnológicos que nos ayudan a operar el sitio web (hosting, analítica, correo) bajo estrictos acuerdos de confidencialidad.</li>
+      <li>Cuando sea requerido por autoridades competentes en cumplimiento de la ley.</li>
+      <li>Con su consentimiento previo y expreso para cualquier otro propósito.</li>
+    </ul>
+
+    <h2>Cookies y tecnologías de rastreo</h2>
+    <p>Utilizamos cookies para mejorar la experiencia de navegación, analizar el tráfico del sitio y recordar sus preferencias. Las cookies son pequeños archivos de texto almacenados en su dispositivo. Puede aceptar o rechazar las cookies no esenciales mediante el aviso que aparece al ingresar al sitio. Las cookies estrictamente necesarias para el funcionamiento del sitio no pueden desactivarse.</p>
+
+    <h2>Seguridad de la información</h2>
+    <p>Implementamos medidas técnicas y organizativas razonables para proteger su información contra acceso no autorizado, pérdida o divulgación. Sin embargo, ningún sistema de transmisión por internet es 100% seguro, por lo que no podemos garantizar seguridad absoluta.</p>
+
+    <h2>Retención de datos</h2>
+    <p>Conservamos su información durante el tiempo necesario para los fines descritos en esta política, o el tiempo exigido por la legislación colombiana aplicable. Los datos del autodiagnóstico se conservan por un máximo de 2 años; los datos del portal de soporte se mantienen mientras exista una relación contractual activa.</p>
+
+    <h2>Sus derechos</h2>
+    <p>De conformidad con la Ley 1581 de 2012, usted tiene derecho a:</p>
+    <ul>
+      <li><strong>Conocer:</strong> los datos que tenemos sobre usted y el uso que les damos.</li>
+      <li><strong>Actualizar y rectificar:</strong> información inexacta o incompleta.</li>
+      <li><strong>Suprimir:</strong> sus datos cuando no sean necesarios para los fines del tratamiento.</li>
+      <li><strong>Revocar</strong> el consentimiento otorgado para el tratamiento.</li>
+      <li><strong>Presentar quejas</strong> ante la Superintendencia de Industria y Comercio (SIC).</li>
+    </ul>
+    <p>Para ejercer cualquiera de estos derechos, contáctenos en <a href="mailto:info@ingeniaco.com" style="color:var(--verde)">info@ingeniaco.com</a>. Responderemos en un plazo máximo de 10 días hábiles.</p>
+
+    <h2>Datos de menores</h2>
+    <p>Nuestros servicios están dirigidos exclusivamente a empresas y profesionales. No recopilamos conscientemente información personal de menores de edad.</p>
+
+    <h2>Cambios en esta política</h2>
+    <p>Podemos actualizar esta Política ocasionalmente. Publicaremos la versión actualizada en este sitio web con la fecha de "Última actualización" correspondiente. El uso continuado de nuestros servicios tras la publicación de cambios implica su aceptación.</p>
+
+    <h2>Contacto</h2>
+    <p>Si tiene preguntas sobre esta Política o desea ejercer sus derechos, contáctenos en:<br>
+    📧 <a href="mailto:info@ingeniaco.com" style="color:var(--verde)">info@ingeniaco.com</a><br>
+    📍 Bucaramanga, Colombia<br>
+    🌐 <a href="https://ingeniaco.com" style="color:var(--verde)">ingeniaco.com</a></p>
+  </div>
+</div>
+
+<!-- ══════════════════ COOKIE BANNER ══════════════════ -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Aviso de cookies">
+  <p>Usamos cookies para mejorar tu experiencia en el sitio y analizar el tráfico. Puedes aceptar todas las cookies o solo las esenciales. Consulta nuestra <a onclick="openPrivacy(event)" href="#">Política de Privacidad</a>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-btn cookie-btn-decline" onclick="declineCookies()">Solo esenciales</button>
+    <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Aceptar todas</button>
+  </div>
+</div>
+
 </body>
 </html>
