@@ -2290,16 +2290,10 @@ textarea.ticket-input {
 
 <!-- ══════════════════ SOPORTE / TICKETS ══════════════════ -->
 <section id="soporte">
-  <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:start">
+  <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:center">
 
-    <!-- LEFT: ticket form -->
-    
-
-    <!-- RIGHT: info + login -->
+    <!-- LEFT: login card -->
     <div class="reveal">
-      <div class="s-eyebrow">Portal de clientes</div>
-      <h2 class="s-title">Soporte<br><em>técnico</em></h2>
-      <p class="s-desc" style="margin-bottom:40px">Registra tu solicitud de soporte. Nuestro equipo la recibirá de inmediato y te responderá a la mayor brevedad.</p>
       <div class="ticket-login" id="ticketLogin">
         <h3>Acceso clientes</h3>
         <p class="login-sub">Ingresa con el nombre de tu empresa y tu NIT como contraseña.</p>
@@ -2320,6 +2314,13 @@ textarea.ticket-input {
         </p>
         <p style="font-size:10px;color:#bbb;text-align:center;margin-top:10px;line-height:1.6">Los datos ingresados se tratan conforme a nuestra <a href="#" onclick="openPrivacy(event)" style="color:var(--verde);text-decoration:underline">Política de Privacidad</a>.</p>
       </div>
+    </div>
+
+    <!-- RIGHT: title + description -->
+    <div class="reveal">
+      <div class="s-eyebrow">Portal de clientes</div>
+      <h2 class="s-title" style="font-size:clamp(36px,5vw,58px)">Soporte<br><em>técnico</em></h2>
+      <p class="s-desc" style="font-size:clamp(15px,1.8vw,18px);line-height:1.75;max-width:480px">Registra tu solicitud de soporte. Nuestro equipo la recibirá de inmediato y te responderá a la mayor brevedad.</p>
     </div>
 
   </div>
