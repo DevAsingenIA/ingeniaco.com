@@ -2311,6 +2311,73 @@ textarea.ticket-input {
         </p>
         <p style="font-size:10px;color:#bbb;text-align:center;margin-top:10px;line-height:1.6">Los datos ingresados se tratan conforme a nuestra <a href="#" onclick="openPrivacy(event)" style="color:var(--verde);text-decoration:underline">Política de Privacidad</a>.</p>
       </div>
+
+      <!-- TICKET FORM — visible tras login exitoso -->
+      <div class="ticket-form-wrap" id="ticketFormWrap">
+
+        <!-- Header morado con nombre empresa -->
+        <div class="ticket-form-header">
+          <div>
+            <div class="ticket-badge">Portal de soporte</div>
+            <div class="ticket-empresa-name" id="ticketEmpresaName"></div>
+          </div>
+          <button class="btn-logout" onclick="logoutTicket()">Cerrar sesión</button>
+        </div>
+
+        <!-- Formulario -->
+        <div class="ticket-form-body" id="ticketFormBody">
+          <div class="ticket-row">
+            <div class="ticket-field">
+              <label>Nombre *</label>
+              <input type="text" class="ticket-input" id="tNombre" placeholder="Tu nombre completo">
+            </div>
+            <div class="ticket-field">
+              <label>Cargo *</label>
+              <input type="text" class="ticket-input" id="tCargo" placeholder="Tu cargo en la empresa">
+            </div>
+          </div>
+          <div class="ticket-row">
+            <div class="ticket-field">
+              <label>Correo electrónico *</label>
+              <input type="email" class="ticket-input" id="tEmail" placeholder="tu@empresa.com">
+            </div>
+            <div class="ticket-field">
+              <label>WhatsApp</label>
+              <input type="tel" class="ticket-input" id="tCelular" placeholder="3001234567">
+            </div>
+          </div>
+          <div class="ticket-field">
+            <label>Descripción del problema *</label>
+            <textarea class="ticket-input" id="tDescripcion" placeholder="Describe el problema o solicitud. Incluye pasos para reproducirlo si aplica."></textarea>
+          </div>
+          <div class="ticket-field">
+            <label>Adjuntar capturas (máx. 2)</label>
+            <div class="upload-area" id="uploadArea">
+              <input type="file" id="tImagenes" accept="image/*" multiple onchange="handleImages(this.files)">
+              <div class="upload-icon">📎</div>
+              <div class="upload-text"><strong>Haz clic o arrastra</strong> tus imágenes aquí<br>JPG · PNG · máx. 5 MB cada una</div>
+            </div>
+            <div class="image-previews" id="imagePreviews"></div>
+          </div>
+          <button class="btn-ticket" id="btnTicket" onclick="enviarTicket()">
+            <span id="btnTicketText">Enviar solicitud de soporte</span>
+            <div class="spinner" id="ticketSpinner"></div>
+          </button>
+        </div>
+
+        <!-- Pantalla de confirmación -->
+        <div class="ticket-confirm" id="ticketConfirm">
+          <div class="ticket-num" id="ticketNumDisplay">ING-0000</div>
+          <div class="ticket-num-label">Número de tu solicitud</div>
+          <p style="font-size:14px;color:var(--texto-suave);line-height:1.8;margin-bottom:32px">
+            Tu solicitud fue registrada exitosamente.<br>Nuestro equipo te responderá al correo indicado a la mayor brevedad.
+          </p>
+          <button class="btn-ticket" onclick="nuevoTicket()" style="max-width:260px;margin:0 auto">
+            Registrar otra solicitud
+          </button>
+        </div>
+
+      </div>
     </div>
 
     <!-- RIGHT: title + description -->
